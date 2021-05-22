@@ -4,10 +4,10 @@ public class Pilots {
     private int pilot_id;
     private String first_name;
     private String last_name;
-    private String rank;
+    private Rank rank;
     private String nickname;
 
-    public Pilots(int pilot_id, String first_name, String last_name, String rank, String nickname) {
+    public Pilots(int pilot_id, String first_name, String last_name, Rank rank, String nickname) {
         this.pilot_id = pilot_id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -39,11 +39,11 @@ public class Pilots {
         this.last_name = last_name;
     }
 
-    public String getRank() {
+    public Rank getRank() {
         return rank;
     }
 
-    public void setRank(String rank) {
+    public void setRank(Rank rank) {
         this.rank = rank;
     }
 
