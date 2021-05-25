@@ -1,12 +1,15 @@
+import dbConnection.joiner.DataJoiner;
 import dbConnection.writer.WriteDbAircraft;
 import dbConnection.writer.WriteDbFlights;
 import dbConnection.writer.WriteDbPilots;
 import entity.Aircraft;
 import entity.Flights;
+import entity.JoinedDataItem;
 import entity.Pilots;
 import io.reader.AircraftDataFileReader;
 import io.reader.FlightsDataFileReader;
 import io.reader.PilotsDataFileReader;
+import io.writer.JoinedDataFileWriter;
 
 import java.util.List;
 
@@ -47,6 +50,15 @@ public class Main {
         for (Flights fli:flightsList){
             WriteDbFlights.Insert(fli);
         }
-    }
 
+        System.out.println("Старт результирующей выборки.");
+
+        List<JoinedDataItem> items = DataJoiner.getJoinedData();
+        System.out.println(items);
+
+        System.out.println("Запись выборки в файл.");
+
+        JoinedDataFileWriter joinedDataFileWriter = new JoinedDataFileWriter(RESULT_FILE);
+        joinedDataFileWriter.write(items);
+    }
 }
